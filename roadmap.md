@@ -154,14 +154,14 @@ owner: tech-lead
 reviewers: [devops-engineer, security-engineer]
 depends_on: []
 gate: auto
-status: in_review
+status: done
 attempts: 1
 max_attempts: 3
 size: M
 spec_refs: ["project.md#45-stack", "project.md#46-monorepo"]
 paths: ["package.json", "pnpm-workspace.yaml", "tsconfig.base.json", "packages/*/package.json"]
 branch_note: "Developed on claude/stoic-hamilton-3cv6iq per execution-environment constraint (routine may not push to task/* branches)."
-merge_blocked_on: "Auto-merge needs the 3-OS CI required checks (project.md §49), introduced by a later Phase 0 task; not yet satisfiable, so this stays in_review rather than done."
+merge_note: "Published directly to main on release-owner instruction (2026-10-04), waiving the PR + 3-OS-CI auto-merge gate (project.md §26/§27). Both reviewers (devops-engineer, security-engineer) approved; pnpm install --frozen-lockfile and pnpm typecheck verified locally. PR #2."
 ```
 
 **Goal:** Create the pnpm workspace with empty packages and strict TypeScript configuration.
