@@ -1,0 +1,12 @@
+{
+  "name": "@quiver/orchestrator-skills",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Integration Bridge between Skills Hub and Orchestrator.",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}

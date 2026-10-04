@@ -154,12 +154,14 @@ owner: tech-lead
 reviewers: [devops-engineer, security-engineer]
 depends_on: []
 gate: auto
-status: todo
-attempts: 0
+status: in_review
+attempts: 1
 max_attempts: 3
 size: M
 spec_refs: ["project.md#45-stack", "project.md#46-monorepo"]
 paths: ["package.json", "pnpm-workspace.yaml", "tsconfig.base.json", "packages/*/package.json"]
+branch_note: "Developed on claude/stoic-hamilton-3cv6iq per execution-environment constraint (routine may not push to task/* branches)."
+merge_blocked_on: "Auto-merge needs the 3-OS CI required checks (project.md §49), introduced by a later Phase 0 task; not yet satisfiable, so this stays in_review rather than done."
 ```
 
 **Goal:** Create the pnpm workspace with empty packages and strict TypeScript configuration.
@@ -170,9 +172,9 @@ paths: ["package.json", "pnpm-workspace.yaml", "tsconfig.base.json", "packages/*
 - `.editorconfig`, `.gitattributes` (`* text=auto eol=lf`, fixtures marked `-text`)
 
 **Acceptance criteria:**
-- [ ] `pnpm install --frozen-lockfile` succeeds
-- [ ] `pnpm typecheck` passes with `strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`
-- [ ] Install scripts disabled by default (`.npmrc`), allowlist documented (SC-47)
+- [x] `pnpm install --frozen-lockfile` succeeds
+- [x] `pnpm typecheck` passes with `strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`
+- [x] Install scripts disabled by default (`.npmrc`), allowlist documented (SC-47)
 
 **Verify:**
 ```bash

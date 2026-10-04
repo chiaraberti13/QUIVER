@@ -1,0 +1,12 @@
+{
+  "name": "@quiver/skill-sources",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Skill source adapters (github, git, local, registry, archive).",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}
