@@ -194,12 +194,14 @@ owner: tech-lead
 reviewers: [devops-engineer]
 depends_on: [P0-T001]
 gate: auto
-status: todo
-attempts: 0
+status: in_review
+attempts: 1
 max_attempts: 3
 size: S
 spec_refs: ["project.md#61-external-facts-to-verify-to-verify"]
 paths: ["docs/adr/0001-stack.md"]
+branch_note: "Developed on claude/lucid-sagan-sf4mlr per execution-environment constraint (routine may not push to task/* branches); same precedent as P0-T001."
+followup_note: "Transitional engines.node range is '>=22.0.0 <23.0.0 || >=24.0.0 <25.0.0' (admits the Node 22 Maintenance LTS that the current CI/dev/cloud images provide under engine-strict=true, plus the target Node 24 Active LTS; excludes EOL v20/v23 and >=25). When those images ship Node 24, a follow-up must narrow the range to '>=24.0.0 <25.0.0' so engines matches the .nvmrc (24.x) line exactly. Precondition to open that follow-up task: `node -v` on the routine's execution environment reports v24.x. Recorded in docs/adr/0001-stack.md."
 ```
 
 **Goal:** Verify the current Node.js LTS line and pin it; record the decision.
@@ -209,8 +211,8 @@ paths: ["docs/adr/0001-stack.md"]
 - `.nvmrc` and `engines` field
 
 **Acceptance criteria:**
-- [ ] ADR cites official sources with access date
-- [ ] `engines.node` matches `.nvmrc`
+- [x] ADR cites official sources with access date
+- [x] `engines.node` matches `.nvmrc`
 
 **Verify:**
 ```bash
