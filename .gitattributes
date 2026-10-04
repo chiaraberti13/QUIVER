@@ -1,0 +1,8 @@
+# Normalize all text files to LF in the repository (project.md §10 hashing
+# assumes deterministic line endings; checkouts stay consistent across OSes).
+* text=auto eol=lf
+
+# Test fixtures must keep their exact original bytes: the canonical-hash golden
+# vectors deliberately include CRLF, BOM and binary content, so Git must never
+# normalize them (project.md §10, §48).
+tests/fixtures/** -text

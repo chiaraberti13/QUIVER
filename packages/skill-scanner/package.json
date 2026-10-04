@@ -1,0 +1,12 @@
+{
+  "name": "@quiver/skill-scanner",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static analysis, risk and capability inference.",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}

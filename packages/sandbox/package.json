@@ -1,0 +1,12 @@
+{
+  "name": "@quiver/sandbox",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Isolated execution sandbox for scripts run by Quiver.",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}
