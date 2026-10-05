@@ -9,9 +9,19 @@
     "pnpm": ">=10.0.0"
   },
   "scripts": {
-    "typecheck": "pnpm -r run typecheck"
+    "typecheck": "pnpm -r run typecheck",
+    "lint": "eslint .",
+    "lint:fixtures": "node tests/lint-fixtures/assert-fail.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
+    "@babel/core": "7.29.7",
+    "@babel/eslint-parser": "7.29.9",
+    "@babel/plugin-syntax-jsx": "7.29.7",
+    "@babel/preset-typescript": "7.29.7",
+    "eslint": "9.39.5",
+    "prettier": "3.9.9",
     "typescript": "7.0.2"
   },
   "pnpm": {

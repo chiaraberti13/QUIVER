@@ -231,12 +231,15 @@ owner: tech-lead
 reviewers: [security-engineer]
 depends_on: [P0-T001]
 gate: auto
-status: todo
-attempts: 0
+status: in_review
+attempts: 1
 max_attempts: 3
 size: M
 spec_refs: ["project.md#28-language-and-type-safety", "project.md#47-boundary-rules-ci-enforced"]
 paths: ["eslint.config.js", ".prettierrc"]
+branch_note: "Developed on claude/nifty-wozniak-49tysf per execution-environment constraint (routine may not push to task/* branches); same precedent as P0-T001/P0-T002."
+toolchain_note: "typescript-eslint cannot be used: the pinned compiler is the native TypeScript 7.0.2 (P0-T002), and typescript-eslint hard-errors with 'does not support TS 7.0' (peer range >=4.8.4 <6.1.0; upstream tracking issue typescript-eslint#10940). To honour the 'ESLint flat config' deliverable without introducing a second, side-by-side TypeScript, the config uses @babel/eslint-parser to parse TS/TSX syntax (no TS compiler API needed). All four required SC rules are enforced syntactically. Recorded in docs/adr/0003-lint-and-format.md."
+merge_note: "Auto-merge gate (roadmap §1) not satisfiable yet: no CI workflows exist (they are created by P0-T005/P0-T006), so 'CI green on Linux/macOS/Windows' cannot hold. Verified locally: pnpm lint, pnpm lint:fixtures, pnpm typecheck, pnpm format:check, pnpm install --frozen-lockfile all pass. security-engineer review performed in a clean context (protected paths: package.json, pnpm-lock.yaml). Left in_review for the release owner, same bootstrap precedent as P0-T001/P0-T002."
 ```
 
 **Goal:** Configure linting so that Secure Coding rules are enforced mechanically.
@@ -247,8 +250,8 @@ paths: ["eslint.config.js", ".prettierrc"]
 - Prettier config
 
 **Acceptance criteria:**
-- [ ] `pnpm lint` passes on the scaffold
-- [ ] A test file using `child_process` outside `packages/security` makes lint fail (committed as a lint fixture under `tests/lint-fixtures`, excluded from build)
+- [x] `pnpm lint` passes on the scaffold
+- [x] A test file using `child_process` outside `packages/security` makes lint fail (committed as a lint fixture under `tests/lint-fixtures`, excluded from build)
 
 **Verify:**
 ```bash
