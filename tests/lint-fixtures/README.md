@@ -13,8 +13,15 @@ They are excluded from:
 
 The expectation that each fixture **fails** lint is enforced by
 `pnpm lint:fixtures`, which runs ESLint over this directory with ignore rules
-disabled and asserts a non-zero result carrying the expected `SC-xx` rule.
+disabled and asserts, for each fixture, that the expected rule reports an
+**error** (severity 2) — and, where the rule carries a custom message, that the
+message includes the expected `SC-xx` tag.
 
 | Fixture | Must trigger |
 |---|---|
-| `child-process-outside-security.ts` | SC-09 (`no-restricted-imports` on `child_process`) |
+| `child-process-outside-security.ts` | SC-09 — static `import` of `child_process` (`no-restricted-imports`) |
+| `child-process-dynamic.ts` | SC-09 — dynamic `import()` of `child_process` (`no-restricted-syntax`) |
+| `any-type.ts` | SC-02 — explicit `any` (`no-restricted-syntax`) |
+| `eval-call.ts` | SC-03 — `eval` (`no-eval`) |
+| `require-non-literal.cjs` | SC-03 — non-literal `require()` path, also an SC-09 evasion (`no-restricted-syntax`) |
+| `dangerous-html.tsx` | SC-34 — `dangerouslySetInnerHTML` outside render (`no-restricted-syntax`) |

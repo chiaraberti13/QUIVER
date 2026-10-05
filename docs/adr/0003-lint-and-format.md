@@ -43,13 +43,27 @@ expressible syntactically, so type information is not required:
 | Rule | Mechanism |
 |---|---|
 | SC-02 | `no-restricted-syntax` selector `TSAnyKeyword` |
-| SC-03 | core `no-eval`, `no-implied-eval`, `no-new-func`, `no-script-url` |
-| SC-09 | core `no-restricted-imports` on `child_process` / `node:child_process`, relaxed by an override for `packages/security/**` |
+| SC-03 | core `no-eval`, `no-implied-eval`, `no-new-func`, `no-script-url`, plus `no-restricted-syntax` selectors for `vm.runIn*`/`vm.compileFunction` and for dynamic `import()` with a non-literal path |
+| SC-09 | `no-restricted-imports` on static `child_process`/`node:child_process` imports (relaxed by a `packages/security/**` override), **plus** `no-restricted-syntax` selectors — applied everywhere, security included — that forbid the non-static ways to reach it: `require('child_process')`, dynamic `import('…child_process')`, and `process.getBuiltinModule`/`process.binding` of it |
 | SC-34 | `no-restricted-syntax` selector `JSXAttribute[name.name='dangerouslySetInnerHTML']`, relaxed by an override for `apps/web/src/render/**` |
 
 `.tsx` needs JSX parsing enabled explicitly (`@babel/plugin-syntax-jsx`), because
 `@babel/preset-typescript` does not infer JSX from the file extension when driven
 through `@babel/eslint-parser`.
+
+**Guardrail integrity.** `no-restricted-imports` sees only *static* ES imports,
+so a security rule that stopped there would be trivially bypassable by
+`require()`, dynamic `import()`, `process.getBuiltinModule`/`binding`, or a
+one-line `/* eslint-disable */`. The config therefore (a) bans every non-static
+path to `child_process` with the SC-09 syntax selectors above (safeExec uses a
+static import, so even `packages/security` has no need of the dynamic forms),
+and (b) sets `linterOptions.noInlineConfig: true` with
+`reportUnusedDisableDirectives: 'error'`, so inline directives cannot switch a
+rule off and any stray disable directive is itself an error. `packages/security`
+keeps the SC-09 static exemption only (`no-restricted-imports: 'off'`); because
+`child_process` is currently the single restricted import, turning the rule off
+there is exact — if more restricted imports are added later, re-specify an
+allowlist in that override rather than leaving the whole rule off.
 
 **Formatting:** Prettier, configured in `.prettierrc`. Prettier governs code and
 JSON; hand-maintained prose (`*.md`: specification, roadmap, ADRs) and the
@@ -58,10 +72,15 @@ their curated layout. No `eslint-config-prettier` is needed: the ESLint config
 carries only security rules, no stylistic rules, so the two tools do not conflict.
 
 **Expect-failure guardrail:** `tests/lint-fixtures/` holds files that violate a
-rule on purpose. They are excluded from a normal `pnpm lint` (ignored unless
-`ESLINT_INCLUDE_FIXTURES=1`) and from any TypeScript build. `pnpm lint:fixtures`
-lints them with that flag set and asserts each is rejected by its intended rule,
-proving the guardrail actually bites (acceptance criterion 2).
+rule on purpose — one per enforced rule: SC-02 (`any`), SC-03 (`eval`), SC-09
+(both the static-import and the dynamic-import forms), and SC-34
+(`dangerouslySetInnerHTML` outside render). They are excluded from a normal
+`pnpm lint` (ignored unless `ESLINT_INCLUDE_FIXTURES=1`) and from any TypeScript
+build. `pnpm lint:fixtures` lints them with that flag set and asserts each is
+rejected **as an error** (severity 2) by its intended rule — and, for the
+custom-message rules, that the message carries the expected `SC-xx` tag — so a
+rule silently downgraded to a warning or a broken selector fails the check
+(acceptance criterion 2).
 
 ### Pinned versions (exact, lockfile-committed — SC-47)
 
@@ -92,6 +111,21 @@ presets require `@babel/core@^8`, which `@babel/eslint-parser@7` does not accept
   the TypeScript compiler API directly.
 - Negative: six dev dependencies added (SC-46). Justified above; listed in the
   next checkpoint report (project.md §27).
+- Limitation / residual risk (syntactic matching): the SC-09 and SC-03 selectors
+  match literal shapes and the identifiers `require` / `process` / `vm`. They
+  catch every natural and common form — static/dynamic/`require`d
+  `child_process` (literal, concatenated or template-literal path),
+  `process.getBuiltinModule`/`binding` of it, `eval`/`Function`/`vm.runIn*`, and
+  non-literal `import()`/`require()`. They **cannot** catch deliberate
+  obfuscation that computes the target at runtime through an alias
+  (`const p = process; p.getBuiltinModule(...)`, `globalThis.process…`,
+  `createRequire(...)(...)`), nor can they know that a local object literally
+  named `vm` is unrelated to `node:vm` (a low-probability false positive). These
+  are inherent limits of a type-free syntactic linter, not gaps to be chased with
+  ever-more selectors. The authoritative controls are outside the model
+  (project.md §4.7): the §47 import-boundary enforcement via dependency-cruiser
+  (P0-T004) and the mandatory protected-path security review (§27), which an
+  obfuscated process-spawn would not survive.
 
 ## Alternatives considered
 
