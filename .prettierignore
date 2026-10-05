@@ -1,0 +1,19 @@
+# Build and dependency output
+node_modules/
+dist/
+build/
+coverage/
+
+# Deterministic / generated files
+pnpm-lock.yaml
+
+# Hand-maintained prose (specification, roadmap, ADRs, docs). Prettier governs
+# code and JSON; wrapping and table layout in these documents are curated by
+# hand, so Prettier must not fight their authors.
+*.md
+
+# Hand-maintained workspace manifest.
+pnpm-workspace.yaml
+
+# Lint fixtures are intentionally malformed; do not reformat them.
+tests/lint-fixtures/
