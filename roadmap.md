@@ -1,6 +1,6 @@
 # QUIVER — roadmap.md
 
-> **Language:** English only. This file is read by the development routine.
+> **Language:** this engineering roadmap remains in English for the development routine. Public-facing documentation is bilingual (English and Italian); see [ADR 0004](docs/adr/0004-bilingual-public-documentation.md).
 >
 > Specification: [`project.md`](project.md).
 
@@ -4510,4 +4510,3 @@ paths: ["docs/phases/phase-9.md"]
 ```bash
 pnpm build
 ```
-

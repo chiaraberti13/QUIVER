@@ -1,8 +1,8 @@
 # QUIVER — project.md
 
-> **Language:** the whole project (code, documentation, UI) is written in English only.
+> **Language:** source code, runtime UI and engineering specifications remain in English. The README and public-facing presentation, contribution and security documentation are available in English and Italian; see [ADR 0004](docs/adr/0004-bilingual-public-documentation.md).
 >
-> **Status:** v3.2 — specification, no application code yet. Revised by the full team (see §0).
+> **Status:** v3.2 — product specification; implementation is at the monorepo scaffold stage. See the [development status](docs/presentation/development-status.md) for the distinction between existing foundations and planned capabilities.
 > **Derived from:** `progetto.md` v2. All v2 decisions remain valid; changes are listed in §0 and in *Open Decisions* (§60).
 
 ---
