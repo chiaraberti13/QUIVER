@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/category-AI%20TOOLING-22D3EE?style=flat-square" alt="Category: AI tooling">
   <img src="https://img.shields.io/badge/stack-TypeScript-8B949E?style=flat-square" alt="Stack: TypeScript">
   <img src="https://img.shields.io/badge/docs-EN%20%7C%20IT-8B5CF6?style=flat-square" alt="Documentation: English and Italian">
-  <img src="https://img.shields.io/badge/licence-MIT-2EA043?style=flat-square" alt="MIT licence">
+  <img src="https://img.shields.io/badge/licence-GPL--3.0-2EA043?style=flat-square" alt="GPL-3.0 licence">
 </p>
 
 # QUIVER
@@ -111,4 +111,4 @@ Contributions use dedicated branches and pull requests. Consult
 
 ## Licence
 
-QUIVER is distributed under the **MIT License**. See [`LICENSE`](LICENSE) for the full terms. Third-party dependencies and referenced provider SDKs remain subject to their own licences.
+QUIVER is distributed under the **GNU GPL-3.0 License**. See [`LICENSE`](LICENSE) for the full terms. Third-party dependencies and referenced provider SDKs remain subject to their own licences.
