@@ -1,48 +1,57 @@
 # Contributing to QUIVER
 
-[English](CONTRIBUTING.md) · [Italiano](CONTRIBUTING.it.md) · [Documentation](docs/README.md)
+<p align="center"><a href="#english">🇬🇧 English</a> · <a href="#italiano">🇮🇹 Italiano</a></p>
 
-QUIVER is at the scaffold stage. Before proposing an implementation, read the
-[specification](project.md), [roadmap](roadmap.md) and
-[development status](docs/presentation/development-status.md).
+## English
+This repository covers a local-first, provider-agnostic Agent Skills inspection ecosystem and collaborative AI-agent orchestrator.
 
-## Contribution workflow
+### Before you start
+1. Read `README.md`, `SECURITY.md`, roadmap and relevant ADR/design documentation.
+2. Search existing issues and use a dedicated branch.
+3. Keep each pull request focused and avoid unrelated refactors.
+4. Never commit secrets, private data, production exports or untrusted generated artefacts.
+5. Report vulnerabilities privately.
 
-1. For a new idea, open an [issue](https://github.com/chiaraberti13/QUIVER/issues)
-   describing the problem and its connection to Skills Hub or Orchestrator.
-2. Work on a dedicated branch and submit a focused pull request. Do not push
-   directly to `main`, force-push or rewrite another contributor's work.
-3. Explain the resulting behaviour, affected files and relevant verification.
-   Reference applicable `SC-xx` rules for security-relevant code changes.
-4. Follow the protected-path reviews and gates in
-   [project.md §27](project.md#27-protected-paths-and-checkpoint-reviews-quivers-own-repository).
-   Do not simulate human approvals or mark roadmap tasks complete without evidence.
-
-## Local checks
-
-Use the prerequisites in the [README](README.md#development-setup):
-
+### Setup
 ```bash
-pnpm install --frozen-lockfile
-pnpm typecheck
-pnpm lint
-pnpm lint:fixtures
-pnpm format:check
+corepack enable\npnpm install --frozen-lockfile
 ```
 
-Keep dependency install restrictions enabled. Product tests, CI workflows and
-runtime entry points will arrive in their own tasks; scaffold checks do not
-prove that a planned feature works.
+### Checks
+```bash
+pnpm typecheck\npnpm lint\npnpm lint:fixtures\npnpm format:check
+```
+At the current scaffold stage, do not document planned scanner, sandbox, provider or runtime controls as implemented. Trust claims must remain content-bound, versioned and evidence-based.
 
-## Documentation contributions
+### Engineering expectations
+Validate untrusted input, fail safely, preserve explicit permission boundaries, keep dependencies minimal and justified, and update tests for behavioural changes. Document data/schema/protocol changes and migration impact. Update English documentation first and keep Italian public documentation semantically aligned.
 
-Update public English and Italian counterparts together, including links,
-examples, status and alternative text. Use `README.md` / `README.it.md` and the
-same `.it.md` convention in guides. Both metadata guides keep the About text
-in English. Technical specifications, ADRs and the machine-read roadmap remain
-in English; see [ADR 0004](docs/adr/0004-bilingual-public-documentation.md).
+### Pull requests
+Describe what changed, why, verification performed, security/privacy impact, compatibility implications and rollback/migration notes. Participation follows `CODE_OF_CONDUCT.md`.
 
-Keep existing historical reports intact. Distinguish specifications from
-implemented features, and verify local links and SVG rendering when changed.
-Report potential vulnerabilities using [SECURITY.md](SECURITY.md), rather than
-including exploit details or secrets in a public issue.
+## Italiano
+Questo repository riguarda a local-first, provider-agnostic Agent Skills inspection ecosystem and collaborative AI-agent orchestrator.
+
+### Prima di iniziare
+1. Leggi `README.md`, `SECURITY.md`, roadmap e ADR/documentazione pertinente.
+2. Controlla le issue esistenti e usa un branch dedicato.
+3. Mantieni ogni pull request focalizzata.
+4. Non committare segreti, dati privati, export di produzione o artefatti generati non fidati.
+5. Segnala privatamente le vulnerabilità.
+
+### Setup
+```bash
+corepack enable\npnpm install --frozen-lockfile
+```
+
+### Controlli
+```bash
+pnpm typecheck\npnpm lint\npnpm lint:fixtures\npnpm format:check
+```
+At the current scaffold stage, do not document planned scanner, sandbox, provider or runtime controls as implemented. Trust claims must remain content-bound, versioned and evidence-based.
+
+### Aspettative tecniche
+Valida gli input non fidati, usa comportamenti fail-safe, conserva i confini espliciti di permesso, mantieni le dipendenze minime e motivate e aggiorna i test. Documenta modifiche a dati/schema/protocolli e migrazioni. Aggiorna prima la documentazione inglese e mantieni quella pubblica italiana semanticamente equivalente.
+
+### Pull request
+Descrivi cosa cambia, perché, verifiche eseguite, impatto sicurezza/privacy, compatibilità e rollback/migrazione. Si applica `CODE_OF_CONDUCT.md`.
