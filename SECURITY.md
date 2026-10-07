@@ -1,39 +1,35 @@
-# Security scope and reporting
+# Security Policy
 
-[English](SECURITY.md) · [Italiano](SECURITY.it.md) · [Documentation](docs/README.md)
+<p align="center"><a href="#english">🇬🇧 English</a> · <a href="#italiano">🇮🇹 Italiano</a></p>
 
-## Current scope
+## English
+### Supported versions
+Security fixes target the latest revision on the default branch unless a release is explicitly documented as supported.
 
-QUIVER is in early development. No production release or supported production
-version has been announced. The existing scaffold and lint rules do not provide
-a working skill scanner, agent sandbox or verified runtime permission model.
-See [development status](docs/presentation/development-status.md).
+### Scope
+Agent Skill ingestion/inspection, provenance and trust metadata, provider adapters, orchestration permissions, budgets, workflows, future runtime execution, local storage and the build/dependency supply chain.
 
-The security design covers untrusted skills, filesystem and process access,
-network boundaries, secrets, provider permissions and audit records in
-[project.md Part B](project.md#part-b--security) and
-[Part C](project.md#part-c--secure-coding-standard). These are requirements to
-implement and verify, not guarantees already delivered.
+### Reporting
+Do not open a public issue for an unpatched vulnerability. Use GitHub private vulnerability reporting / Security Advisories when available. Include affected commit/version, impact, reproducible steps or minimal proof of concept, environment assumptions and possible mitigations. Remove unrelated sensitive data.
 
-## Reporting a potential vulnerability
+### Security requirements
+Never commit secrets, credentials, private keys or production/private data. Validate untrusted input, use least privilege, review dependency and build-script changes, and keep authorization/permission decisions explicit and auditable. A static scan result must never be treated as a universal safety guarantee. Future execution features must default to explicit permissions, bounded resources and auditable actions.
 
-The intended channel is GitHub private vulnerability reporting, as specified in
-project.md §25. This document does not confirm that the feature is enabled.
+### Responsible testing
+Test only systems, files, providers and accounts you own or are explicitly authorized to use. No destructive testing, denial of service, unauthorized access or collection of third-party data.
 
-1. Open the repository's [Security tab](https://github.com/chiaraberti13/QUIVER/security).
-   Use **Report a vulnerability** if private reporting is available.
-2. Otherwise, contact the maintainer through a private channel you already know.
-   If none is established, open a non-sensitive issue asking for a private
-   reporting channel, without the vulnerability details.
-3. In the private report, include the affected commit, component, impact,
-   reproduction steps and sanitized evidence. Never include live credentials.
+## Italiano
+### Versioni supportate
+Le correzioni riguardano la revisione più recente del branch predefinito salvo release esplicitamente supportate.
 
-Response targets, a confirmed private contact and supported-version policy
-remain part of roadmap task P0-T017. No response-time commitment is claimed here.
-Dependency issues should identify the affected version and its use in QUIVER.
+### Ambito
+Agent Skill ingestion/inspection, provenance and trust metadata, provider adapters, orchestration permissions, budgets, workflows, future runtime execution, local storage and the build/dependency supply chain.
 
-## Contribution boundaries
+### Segnalazione
+Non aprire issue pubbliche per vulnerabilità non corrette. Usa la segnalazione privata / Security Advisories quando disponibile. Indica commit/versione, impatto, passaggi riproducibili o PoC minimo, assunzioni ambientali e mitigazioni, rimuovendo dati sensibili non necessari.
 
-Security-relevant changes follow the Secure Coding Standard and protected-path
-review process in [CONTRIBUTING.md](CONTRIBUTING.md). Findings in documentation,
-translation or links can use public issues if they disclose no sensitive detail.
+### Requisiti di sicurezza
+Non committare segreti, credenziali, chiavi private o dati privati/di produzione. Valida gli input non fidati, usa privilegi minimi, controlla dipendenze e script di build e mantieni esplicite e auditabili le decisioni di autorizzazione/permesso. A static scan result must never be treated as a universal safety guarantee. Future execution features must default to explicit permissions, bounded resources and auditable actions.
+
+### Test responsabili
+Esegui test solo su sistemi, file, provider e account propri o esplicitamente autorizzati. Sono esclusi test distruttivi, DoS, accessi non autorizzati e raccolta di dati di terzi.
