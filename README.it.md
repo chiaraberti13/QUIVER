@@ -114,3 +114,12 @@ I contributi usano branch dedicati e pull request. Consulta
 Non è ancora presente un file `LICENSE`. La decisione sulla licenza è in attesa
 nel [task P0-T016 della roadmap](roadmap.md#p0-t016--legal-quiver-license).
 QUIVER non eredita badge o dichiarazioni di licenza dagli altri repository.
+
+## Comunità e collaborazione
+
+- [Come contribuire](CONTRIBUTING.md)
+- [Codice di condotta](CODE_OF_CONDUCT.md)
+- [Segnalazioni di sicurezza](SECURITY.md)
+- [Accessibilità e limiti delle verifiche](ACCESSIBILITY.md)
+- [Segnalare un problema o proporre un miglioramento](https://github.com/chiaraberti13/QUIVER/issues/new/choose)
+- [Licenza del progetto](LICENSE)

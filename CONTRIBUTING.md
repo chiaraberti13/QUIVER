@@ -14,12 +14,16 @@ This repository covers a local-first, provider-agnostic Agent Skills inspection 
 
 ### Setup
 ```bash
-corepack enable\npnpm install --frozen-lockfile
+corepack enable
+pnpm install --frozen-lockfile
 ```
 
 ### Checks
 ```bash
-pnpm typecheck\npnpm lint\npnpm lint:fixtures\npnpm format:check
+pnpm typecheck
+pnpm lint
+pnpm lint:fixtures
+pnpm format:check
 ```
 At the current scaffold stage, do not document planned scanner, sandbox, provider or runtime controls as implemented. Trust claims must remain content-bound, versioned and evidence-based.
 
@@ -41,12 +45,16 @@ Questo repository riguarda a local-first, provider-agnostic Agent Skills inspect
 
 ### Setup
 ```bash
-corepack enable\npnpm install --frozen-lockfile
+corepack enable
+pnpm install --frozen-lockfile
 ```
 
 ### Controlli
 ```bash
-pnpm typecheck\npnpm lint\npnpm lint:fixtures\npnpm format:check
+pnpm typecheck
+pnpm lint
+pnpm lint:fixtures
+pnpm format:check
 ```
 At the current scaffold stage, do not document planned scanner, sandbox, provider or runtime controls as implemented. Trust claims must remain content-bound, versioned and evidence-based.
 
@@ -55,3 +63,13 @@ Valida gli input non fidati, usa comportamenti fail-safe, conserva i confini esp
 
 ### Pull request
 Descrivi cosa cambia, perché, verifiche eseguite, impatto sicurezza/privacy, compatibilità e rollback/migrazione. Si applica `CODE_OF_CONDUCT.md`.
+
+## Segnalazioni e verifica dei contributi
+
+Ambiente locale per ispezione di Agent Skills e orchestrazione di agenti AI.
+
+Usa i [modelli di segnalazione](https://github.com/chiaraberti13/QUIVER/issues/new/choose) per bug, miglioramenti e barriere di accessibilità. Prima di aprire una nuova segnalazione verifica se ne esiste già una equivalente. Contesto utile: Versioni Node.js e pnpm, workspace, provider e skill minima senza segreti.
+
+Per le modifiche, compila il modello di pull request e indica verifiche eseguite, esito e verifiche non eseguite con il motivo. Mantieni le istruzioni specifiche di questo progetto e la parità delle lingue già disponibili. Non allegare dati di produzione, credenziali o dati personali; usa esempi sintetici.
+
+Consulta [il codice di condotta](CODE_OF_CONDUCT.md), [la policy di sicurezza](SECURITY.md) e [le indicazioni di accessibilità](ACCESSIBILITY.md). Le vulnerabilità seguono esclusivamente il percorso descritto nella policy di sicurezza.

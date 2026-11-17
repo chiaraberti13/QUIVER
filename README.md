@@ -112,3 +112,12 @@ Contributions use dedicated branches and pull requests. Consult
 ## Licence
 
 QUIVER is distributed under the **GNU GPL-3.0 License**. See [`LICENSE`](LICENSE) for the full terms. Third-party dependencies and referenced provider SDKs remain subject to their own licences.
+
+## Comunità e collaborazione
+
+- [Come contribuire](CONTRIBUTING.md)
+- [Codice di condotta](CODE_OF_CONDUCT.md)
+- [Segnalazioni di sicurezza](SECURITY.md)
+- [Accessibilità e limiti delle verifiche](ACCESSIBILITY.md)
+- [Segnalare un problema o proporre un miglioramento](https://github.com/chiaraberti13/QUIVER/issues/new/choose)
+- [Licenza del progetto](LICENSE)
