@@ -28,6 +28,7 @@
 
 ## Navigazione rapida
 
+- [Diagramma dell’architettura](#-diagramma-dellarchitettura)
 - [Cos'è QUIVER?](#cosè-quiver)
 - [Cosa esiste oggi?](#cosa-esiste-oggi)
 - [Configurazione per lo sviluppo](#configurazione-per-lo-sviluppo)
@@ -64,6 +65,28 @@ Non ci sono release o un prodotto eseguibile. Alla radice non esistono script
 `build`, `test`, `start` o `dev`, e non ci sono ancora workflow CI nel repository.
 I controlli dello scaffold non dimostrano copertura dello scanner o sicurezza del
 runtime. Vedi lo [stato dello sviluppo](docs/presentation/development-status.it.md).
+
+## 🗺️ Diagramma dell’architettura
+
+```mermaid
+flowchart TD
+    accTitle: Architettura di QUIVER
+    accDescr: Queste cartelle contengono la struttura iniziale dei pacchetti TypeScript. Skills Hub e Orchestrator sono progettati per funzionare in autonomia. Le linee tratteggiate indicano il collegamento opzionale previsto per associare agli agenti versioni precise delle skill.
+    repo["Workspace pnpm"] --> apps["apps · CLI, server, web"]
+    repo --> pkg["packages"]
+    repo --> prov["providers · struttura degli adattatori"]
+    pkg --> hub["Skills Hub · skill-engine, skill-scanner"]
+    pkg --> orch["Orchestrator · agent-runtime, workflow-engine"]
+    hub -.-> bridge["integrations/orchestrator-skills"]
+    bridge -.-> orch
+
+    classDef core fill:#23313a,stroke:#7193a7,color:#f4f7f8;
+    classDef planned fill:#302a35,stroke:#b49abc,color:#f4f7f8,stroke-dasharray:5 3;
+    class apps,pkg,prov core;
+    class hub,orch,bridge planned;
+```
+
+Queste cartelle contengono la struttura iniziale dei pacchetti TypeScript. Skills Hub e Orchestrator sono progettati per funzionare in autonomia. Le linee tratteggiate indicano il collegamento opzionale previsto per associare agli agenti versioni precise delle skill.
 
 ## Configurazione per lo sviluppo
 

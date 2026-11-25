@@ -28,6 +28,7 @@
 
 ## Quick navigation
 
+- [Architecture Diagram](#-architecture-diagram)
 - [What is QUIVER?](#what-is-quiver)
 - [What exists today?](#what-exists-today)
 - [Development setup](#development-setup)
@@ -64,6 +65,28 @@ No release or runnable product is available. There is no root `build`, `test`,
 `start` or `dev` script, and no CI workflow is committed yet. Do not infer scanner
 coverage or runtime security from scaffold checks. See
 [development status](docs/presentation/development-status.md).
+
+## 🗺️ Architecture Diagram
+
+```mermaid
+flowchart TD
+    accTitle: Architecture of QUIVER
+    accDescr: These directories contain TypeScript scaffolds. Skills Hub and Orchestrator are designed to work independently. The dotted links show the optional bridge planned for pinned skill versions.
+    repo["pnpm workspace"] --> apps["apps · CLI, server, web"]
+    repo --> pkg["packages"]
+    repo --> prov["providers · adapter scaffolds"]
+    pkg --> hub["Skills Hub · skill-engine, skill-scanner"]
+    pkg --> orch["Orchestrator · agent-runtime, workflow-engine"]
+    hub -.-> bridge["integrations/orchestrator-skills"]
+    bridge -.-> orch
+
+    classDef core fill:#23313a,stroke:#7193a7,color:#f4f7f8;
+    classDef planned fill:#302a35,stroke:#b49abc,color:#f4f7f8,stroke-dasharray:5 3;
+    class apps,pkg,prov core;
+    class hub,orch,bridge planned;
+```
+
+These directories contain TypeScript scaffolds. Skills Hub and Orchestrator are designed to work independently. The dotted links show the optional bridge planned for pinned skill versions.
 
 ## Development setup
 
